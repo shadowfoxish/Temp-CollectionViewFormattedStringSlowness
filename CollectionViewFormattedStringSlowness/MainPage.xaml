@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns:svcModel="clr-namespace:CollectionViewFormattedStringSlowness" x:DataType="svcModel:MainPageViewModel" xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CollectionViewFormattedStringSlowness.MainPage">
+	<Grid RowDefinitions="50,*">
+		<Label Text="Demo with Formatted Text" Grid.Row="0"></Label>
+		<CollectionView Grid.Row="1" ItemsSource="{Binding Path=Items}" VerticalScrollBarVisibility="Always">
+			<CollectionView.ItemTemplate>
+				<DataTemplate x:DataType="svcModel:ListItem">
+					<Frame BorderColor="{StaticResource Gray950}" Style="{StaticResource listItem}">
+						<Grid RowDefinitions="25,25" ColumnDefinitions="30,3*,*,2*">
+							<Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="{Binding Path=Num}" FontSize="Title" />
+							<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Id}" HorizontalOptions="Start"></Label>
+							<Label Grid.Row="0" Grid.Column="3" Text="{Binding Path=Bin}" HorizontalOptions="End"></Label>
+							<Label Grid.Row="1" Grid.Column="1" Text="{Binding Path=SKU, StringFormat='SKU{0}'}" HorizontalOptions="Start"></Label>
+							<!--
+							Uncomment this and comment out the next Label, for a much better UI performance
+							<Label Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" Text="{Binding Path=QuantityUnitOfMeasure}" />
+							-->
+							<Label Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End">
+								<Label.FormattedText>
+									<FormattedString>
+										<FormattedString.Spans>
+											<Span Text="{Binding Path=Quantity}"></Span>
+											<Span Text=": ["></Span>
+											<Span Text="{Binding Path=UnitOfMeasure}"></Span>
+											<Span Text=" " />
+											<Span Text="{Binding Path=UnitSize}"></Span>
+											<Span Text="]" />
+										</FormattedString.Spans>
+									</FormattedString>
+								</Label.FormattedText>
+							</Label>
+						</Grid>
+					</Frame>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</Grid>
+</ContentPage>
