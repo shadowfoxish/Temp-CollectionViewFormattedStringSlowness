@@ -35,13 +35,13 @@
 	<Shell.FlyoutFooter>
 		<controls:FlyoutFooter />
 	</Shell.FlyoutFooter>
-	<ShellContent
+	<ShellContent Icon="home_black_24dp"
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-	<FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Menu 1">
-		<ShellContent Route="abc123" Title="ABC123" ContentTemplate="{DataTemplate local:MainPage}" />
-		<ShellContent Route="mno123" Title="MNO123" ContentTemplate="{DataTemplate local:MainPage}" />
-		<ShellContent Route="xyz789" Title="xyz789" ContentTemplate="{DataTemplate local:MainPage}" />
+	<FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Menu 1" Icon="home_black_24dp">
+		<ShellContent Route="abc123" Title="ABC123" Icon="home_black_24dp" ContentTemplate="{DataTemplate local:MainPage}" />
+		<ShellContent Route="mno123" Title="MNO123" Icon="home_black_24dp" ContentTemplate="{DataTemplate local:MainPage}" />
+		<ShellContent Route="xyz789" Title="xyz789" Icon="home_black_24dp" ContentTemplate="{DataTemplate local:MainPage}" />
 	</FlyoutItem>
 </Shell>
