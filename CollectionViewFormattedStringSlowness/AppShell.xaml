@@ -3,12 +3,45 @@
     x:Class="CollectionViewFormattedStringSlowness.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:controls="clr-namespace:Controls" 
+	x:DataType="local:AppShell"
     xmlns:local="clr-namespace:CollectionViewFormattedStringSlowness"
-    Shell.FlyoutBehavior="Disabled">
-
-    <ShellContent
+    Shell.FlyoutBehavior="Flyout">
+	<Shell.ItemTemplate>
+		<DataTemplate>
+			<Grid ColumnDefinitions="2*,8*">
+				<VisualStateManager.VisualStateGroups>
+					<VisualStateGroup x:Name="CommonStates">
+						<VisualState x:Name="Normal">
+							<VisualState.Setters>
+								<Setter Property="BackgroundColor" Value="Transparent" />
+							</VisualState.Setters>
+						</VisualState>
+						<VisualState x:Name="Selected">
+							<VisualState.Setters>
+								<Setter Property="BackgroundColor" Value="{StaticResource Key=Tertiary}" />
+							</VisualState.Setters>
+						</VisualState>
+					</VisualStateGroup>
+				</VisualStateManager.VisualStateGroups>
+				<Image Grid.Column="0" Source="{Binding Path=FlyoutIcon}" Margin="5" HeightRequest="45" />
+				<Label TextColor="Black" Grid.Column="1" Text="{Binding Path=Title}" FontSize="Large" VerticalTextAlignment="Center" />
+			</Grid>
+		</DataTemplate>
+	</Shell.ItemTemplate>
+	<Shell.FlyoutHeader>
+		<controls:FlyoutHeader />
+	</Shell.FlyoutHeader>
+	<Shell.FlyoutFooter>
+		<controls:FlyoutFooter />
+	</Shell.FlyoutFooter>
+	<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
+	<FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Menu 1">
+		<ShellContent Route="abc123" Title="ABC123" ContentTemplate="{DataTemplate local:MainPage}" />
+		<ShellContent Route="mno123" Title="MNO123" ContentTemplate="{DataTemplate local:MainPage}" />
+		<ShellContent Route="xyz789" Title="xyz789" ContentTemplate="{DataTemplate local:MainPage}" />
+	</FlyoutItem>
 </Shell>
