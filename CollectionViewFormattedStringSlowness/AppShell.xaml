@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:CollectionViewFormattedStringSlowness"
     Shell.FlyoutBehavior="Flyout">
 	<Shell.ItemTemplate>
-		<DataTemplate>
+		<DataTemplate x:DataType="ShellContent">
 			<Grid ColumnDefinitions="2*,8*">
 				<VisualStateManager.VisualStateGroups>
 					<VisualStateGroup x:Name="CommonStates">
